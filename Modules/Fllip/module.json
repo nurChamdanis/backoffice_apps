@@ -1,0 +1,11 @@
+{
+    "name": "Fllip",
+    "alias": "fllip",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Fllip\\App\\Providers\\FllipServiceProvider"
+    ],
+    "files": []
+}

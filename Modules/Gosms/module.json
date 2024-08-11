@@ -1,0 +1,11 @@
+{
+    "name": "Gosms",
+    "alias": "gosms",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Gosms\\App\\Providers\\GosmsServiceProvider"
+    ],
+    "files": []
+}

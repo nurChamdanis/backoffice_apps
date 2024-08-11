@@ -1,0 +1,11 @@
+{
+    "name": "PPOB",
+    "alias": "ppob",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PPOB\\App\\Providers\\PPOBServiceProvider"
+    ],
+    "files": []
+}

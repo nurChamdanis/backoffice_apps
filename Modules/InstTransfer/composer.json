@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/insttransfer",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\InstTransfer\\": "",
+            "Modules\\InstTransfer\\App\\": "app/",
+            "Modules\\InstTransfer\\Database\\Factories\\": "database/factories/",
+            "Modules\\InstTransfer\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\InstTransfer\\Tests\\": "tests/"
+        }
+    }
+}

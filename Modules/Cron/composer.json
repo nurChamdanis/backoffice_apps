@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/cron",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Cron\\": "",
+            "Modules\\Cron\\App\\": "app/",
+            "Modules\\Cron\\Database\\Factories\\": "database/factories/",
+            "Modules\\Cron\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Cron\\Tests\\": "tests/"
+        }
+    }
+}

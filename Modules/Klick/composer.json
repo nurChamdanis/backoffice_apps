@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/klick",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Klick\\": "",
+            "Modules\\Klick\\App\\": "app/",
+            "Modules\\Klick\\Database\\Factories\\": "database/factories/",
+            "Modules\\Klick\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Klick\\Tests\\": "tests/"
+        }
+    }
+}

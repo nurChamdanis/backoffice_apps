@@ -1,0 +1,52 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    app: backend
+spec:
+  selector:
+    matchLabels:
+      app: backend
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  group: application
+              topologyKey: "kubernetes.io/hostname"
+      imagePullSecrets:
+      - name: container-registry-secret
+      containers:
+      - image: CHANGE_ME
+        name: backend-app
+        ports:
+        - containerPort: 80
+          name: backend-app
+      #   volumeMounts:
+      #   - name: persistent-storage
+      #     mountPath: /var/www/html
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 3
+          periodSeconds: 3
+          timeoutSeconds: 1
+          failureThreshold: 2
+          successThreshold: 1
+      # volumes:
+      # - name: persistent-storage
+      #   emptyDir: {}

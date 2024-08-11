@@ -1,0 +1,63 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  IMAGE_FULL_NAME: registry-intl.ap-southeast-5.aliyuncs.com/bilpay/backend:$CI_COMMIT_REF_NAME
+
+build:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:v1.14.0-debug
+    entrypoint: [""]
+  script:
+    - mkdir -p storage/framework/cache
+    - mkdir -p storage/framework/sessions
+    - mkdir -p storage/framework/views
+    - echo $PROD_ENV | base64 -d > .env
+    - ls -l storage/framework/
+    - echo $REGISTRY_AUTH > /kaniko/.docker/config.json
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
+      --destination "$IMAGE_FULL_NAME"
+  only:
+  - tags
+  tags:
+  - bilpay-production
+###
+.init: &init
+  - cd deploy
+  - export KUSTOMIZE_PLUGIN_HOME=$(mktemp)
+  - export IMAGE_VERSION=$IMAGE_FULL_NAME
+  # - sed -i "s/CHANGE_ME/$IMAGE_FULL_NAME/g" backend/deployment.yaml
+  - helmfile repos
+
+.diff:
+  stage: deploy
+  image: ghcr.io/helmfile/helmfile:v0.162.0
+  script:
+    - *init
+    - helmfile diff
+
+.apply:
+  stage: deploy
+  image: ghcr.io/helmfile/helmfile:v0.162.0
+  script:
+    - *init
+    - helmfile apply
+  when: manual
+
+diff:bilpay-production:
+  extends: .diff
+  only:
+  - tags
+  tags:
+  - bilpay-production
+
+apply:bilpay-production:
+  extends: .apply
+  only:
+  - tags
+  tags:
+  - bilpay-production

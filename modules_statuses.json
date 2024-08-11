@@ -1,0 +1,17 @@
+{
+    "Produk": true,
+    "Travel": true,
+    "InstTransfer": true,
+    "Api": true,
+    "PPOB": true,
+    "Setting": true,
+    "Users": true,
+    "Transaksi": true,
+    "Klick": true,
+    "Fllip": true,
+    "Admin": true,
+    "Cron": true,
+    "Gosms": true,
+    "Trash": true,
+    "Wallet": true
+}

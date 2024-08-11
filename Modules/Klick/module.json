@@ -1,0 +1,11 @@
+{
+    "name": "Klick",
+    "alias": "klick",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Klick\\App\\Providers\\KlickServiceProvider"
+    ],
+    "files": []
+}

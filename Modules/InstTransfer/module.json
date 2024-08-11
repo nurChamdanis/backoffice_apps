@@ -1,0 +1,11 @@
+{
+    "name": "InstTransfer",
+    "alias": "insttransfer",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\InstTransfer\\App\\Providers\\InstTransferServiceProvider"
+    ],
+    "files": []
+}
